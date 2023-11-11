@@ -16,11 +16,26 @@ return new class extends Migration
             $table->string('name', 60);
             $table->string('description', 600);
             $table->double('price');
+            $table->softDeletes();
             $table->unsignedBigInteger('customer_id');
             $table->unsignedBigInteger('city_id');
             $table->unsignedBigInteger('category_id');
             $table->timestamps();
 
+            $table->foreign('customer_id')
+                ->references('id')
+                ->on('customers')
+                ->onDelete('restrict');
+
+            $table->foreign('category_id')
+                ->references('id')
+                ->on('categories')
+                ->onDelete('restrict');
+
+            $table->foreign('city_id')
+                ->references('id')
+                ->on('cities')
+                ->onDelete('restrict');
         });
     }
 
@@ -30,5 +45,6 @@ return new class extends Migration
     public function down(): void
     {
         Schema::dropIfExists('products');
+
     }
 };
