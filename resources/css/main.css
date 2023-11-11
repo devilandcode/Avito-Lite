@@ -1,0 +1,99 @@
+:root {
+    --bg-color: #f5f5f5;
+    --text-color: #6c757d;
+    --acent-color: #00BFFF;
+    --contrast-color: #3d464d;
+}
+
+html, body {
+    height: 100%;
+}
+
+body {
+    min-width: 320px;
+    font-family: 'Roboto', sans-serif;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+}
+a {
+    text-decoration: none;
+    color: white;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+}
+/*========================================General Rules================================*/
+.wrapper {
+    min-height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.main {
+    flex: 0 1 auto;
+}
+/*========================================General Rules================================*/
+
+/*========================================Headers Rules================================*/
+.header-top {
+    background-color: var(--contrast-color);
+}
+ul.social-icons {
+    list-style: none;
+    align-items: center;
+}
+ul.social-icons li {
+    margin-right: 10px;
+}
+.social-icons a{
+    background-color: #6c757d;
+    height: 30px;
+    width: 30px;
+    border-radius: 50%;
+    float: left;
+    color: black;
+    text-align: center;
+    line-height: 30px;
+    transition: all 0.3s;
+}
+
+.social-icons a:hover {
+    background-color: var(--bg-color);
+    
+}
+ul.header-menu {
+    margin-left: -35px;
+}
+ul.header-menu li{
+    list-style: none;
+    padding: 3px;  
+}
+
+.header-menu a:hover {
+    color: var(--text-color);
+}
+.order {
+    background-color: var(--acent-color);
+}
+.btn-group {
+    margin-right: 10px;
+}
+.header-logo {
+    max-width: 300px;
+}
+.logo {
+    max-height: 150px;
+    max-width: 300px;
+}
+
+.cat {
+    margin: auto 0;
+    text-align: center;
+    align-items: center;
+}
+.btn-cat {
+    background-color: var(--acent-color);
+}
+/*========================================Headers Rules================================*/
