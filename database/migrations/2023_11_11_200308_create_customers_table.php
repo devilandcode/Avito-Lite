@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('customers', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('name', 20);
+            $table->string('name', 40);
             $table->string('email', 50)->unique();
             $table->string('password', 100);
             $table->timestamps();

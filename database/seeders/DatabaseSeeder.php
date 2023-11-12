@@ -14,11 +14,9 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        $this->call([UsersTableSeeder::class]);
-        // \App\Models\User::factory(10)->create();
-        DB::table('cities')->insert([
-            'city' => Str::random(10),
-        ]);
+//        $this->call([UsersTableSeeder::class]);
+        $this->call([CustomersTableSeeder::class]);
+        $this->call([CitiesTableSeeder::class]);
         // \App\Models\User::factory()->create([
         //     'name' => 'Test User',
         //     'email' => 'test@example.com',
