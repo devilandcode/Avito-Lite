@@ -32,9 +32,39 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  * @method static \Illuminate\Database\Eloquent\Builder|Product whereName($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Product wherePrice($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Product whereUpdatedAt($value)
+ * @property-read \App\Models\Category $category
+ * @property-read \App\Models\City $city
+ * @property-read \App\Models\Customer $customer
+ * @method static \Database\Factories\ProductFactory factory($count = null, $state = [])
+ * @method static \Illuminate\Database\Eloquent\Builder|Product onlyTrashed()
+ * @method static \Illuminate\Database\Eloquent\Builder|Product withTrashed()
+ * @method static \Illuminate\Database\Eloquent\Builder|Product withoutTrashed()
  * @mixin \Eloquent
  */
 class Product extends Model
 {
     use HasFactory, SoftDeletes;
+
+    public function city()
+    {
+        return $this->belongsTo(City::class);
+    }
+
+    public function category()
+    {
+        return $this->belongsTo(Category::class);
+    }
+
+    public function customer()
+    {
+        return $this->belongsTo(Customer::class);
+    }
+    protected $fillable = [
+        'name',
+        'description',
+        'price',
+        'customer_id',
+        'city_id',
+        'category_id'
+    ];
 }

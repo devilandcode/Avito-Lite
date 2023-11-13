@@ -23,15 +23,27 @@ use Illuminate\Database\Eloquent\Model;
  * @method static \Illuminate\Database\Eloquent\Builder|Customer whereName($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Customer wherePassword($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Customer whereUpdatedAt($value)
+ * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\Product> $products
+ * @property-read int|null $products_count
+ * @method static \Database\Factories\CustomerFactory factory($count = null, $state = [])
  * @mixin \Eloquent
  */
 class Customer extends Model
 {
     use HasFactory;
 
+    public function products()
+    {
+        return $this->hasMany(Product::class);
+    }
+
     protected $fillable = [
         'name',
         'email',
+        'password'
+    ];
+
+    protected $hidden = [
         'password'
     ];
 }

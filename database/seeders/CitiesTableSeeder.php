@@ -14,7 +14,7 @@ class CitiesTableSeeder extends Seeder
     public function run(): void
     {
         City::factory()
-            ->count(10)
+            ->count(11)
             ->create();
     }
 }
