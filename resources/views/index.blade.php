@@ -122,7 +122,7 @@
             </div>
         </section>
     </x-slot>
-    <main>
+
         <div class="container mx-auto">
             <div class="mt-12 mb-4">
                 <p class="text-2xl font-bold">Recommendations for you</p>
@@ -205,6 +205,5 @@
                 </div>
             </div>
         </div>
-    </main>
 </x-app-layout>
 

@@ -5,7 +5,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="csrf-token" content="{{ csrf_token() }}">
 
-        <title>{{ config('app.name', 'Laravel') }}</title>
+        <title>Avito</title>
 
         <!-- Fonts -->
         <link rel="preconnect" href="https://fonts.bunny.net">
@@ -14,8 +14,8 @@
         <!-- Scripts -->
         @vite(['resources/css/app.css', 'resources/js/app.js'])
     </head>
-    <body>
-        <div class="h-screen bg-white">
+    <body class="min-h-[100%]">
+        <div class="h-screen min-h-[100%] bg-white flex flex-col">
             <!-- Page Heading -->
             @if (isset($header))
                 {{ $header }}
@@ -29,7 +29,7 @@
                 {{ $section }}
             @endif
             <!-- Page Content -->
-            <main>
+            <main class="flex-auto">
                 {{ $slot }}
             </main>
             <!-- Page Footer -->
@@ -37,7 +37,7 @@
                 <div class="container max-w-4xl mx-auto">
                     <div class="flex justify-between text-sm py-2">
                         <div class="">
-                            <span class="text-white">2023 &copy; Avito LLC</span>
+                            <span class="text-white">{{ date('Y') }} &copy; Avito LLC</span>
                         </div>
                         <div class="">
                             <ul class="flex space-x-2 text-white">
