@@ -1,15 +1,15 @@
+@php use Diglactic\Breadcrumbs\Breadcrumbs; @endphp
 <x-app-layout>
     <x-slot name="header">
-        <header class="bg-black">
-            <div class="container mx-auto flex justify-between items-center">
-                <div class="">
-                    <ul class="flex">
-                        <li class="text-white mr-4"><a class="hover:text-rose-500" href="">For Business</a></li>
-                        <li class="text-white mr-4"><a class="hover:text-rose-500" href="">Career in Avito</a></li>
-                        <li class="text-white mr-4"><a class="hover:text-rose-500" href="">Support</a></li>
-                        <li class="text-white mr-4"><a class="hover:text-rose-500" href="">Categories</a></li>
-                    </ul>
-                </div>
+        <x-header.index >
+                <x-header.left-menu.index class="">
+                    <x-header.left-menu.list>
+                        <x-header.left-menu.link>For Business</x-header.left-menu.link>
+                        <x-header.left-menu.link>Career in Avito</x-header.left-menu.link>
+                        <x-header.left-menu.link>Support</x-header.left-menu.link>
+                        <x-header.left-menu.link>Categories</x-header.left-menu.link>
+                    </x-header.left-menu.list>
+                </x-header.left-menu.index>
                 <div class="flex">
                     <div class="mr-8 flex">
                         <a href="" class="text-white text-sm bg-blue-400 my-1 py-2 px-4 rounded hover:bg-blue-600">Add advertisement</a>
@@ -18,7 +18,36 @@
                         @if (Route::has('login'))
                             <div class="">
                                 @auth
-                                    <a href="{{ url('/dashboard') }}" class="text-white hover:text-rose-500">Profile</a>
+                                    <x-dropdown align="right" width="48">
+                                        <x-slot name="trigger">
+                                            <button class="inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-white bg-black hover:text-rose-500 focus:outline-none transition ease-in-out duration-150">
+                                                <div>{{ Auth::user()->name }}</div>
+
+                                                <div class="ms-1">
+                                                    <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
+                                                        <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
+                                                    </svg>
+                                                </div>
+                                            </button>
+                                        </x-slot>
+
+                                        <x-slot name="content">
+                                            <x-dropdown-link :href="route('profile.edit')">
+                                                {{ __('Profile') }}
+                                            </x-dropdown-link>
+
+                                            <!-- Authentication -->
+                                            <form method="POST" action="{{ route('logout') }}">
+                                                @csrf
+
+                                                <x-dropdown-link :href="route('logout')"
+                                                                 onclick="event.preventDefault();
+                                                this.closest('form').submit();">
+                                                    {{ __('Log Out') }}
+                                                </x-dropdown-link>
+                                            </form>
+                                        </x-slot>
+                                    </x-dropdown>
                                 @else
                                     <a href="{{ route('login') }}" class="text-white mr-2 hover:text-rose-500">Login</a>
 
@@ -30,8 +59,7 @@
                         @endif
                     </div>
                 </div>
-            </div>
-        </header>
+        </x-header.index>
     </x-slot>
 
     <x-slot name="nav">
@@ -53,7 +81,9 @@
             </div>
         </nav>
     </x-slot>
-
+    <x-slot name="breadcrumbs">
+        {{ Breadcrumbs::render('country') }}
+    </x-slot>
     <x-slot name="section">
         <section>
             <div class="container mx-auto">
