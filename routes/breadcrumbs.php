@@ -19,8 +19,21 @@ Breadcrumbs::for('country', function (BreadcrumbTrail $trail) {
     $trail->push('Country', URL::to('/countries'));
 });
 
+// Home > Login
+Breadcrumbs::for('login', function (BreadcrumbTrail $trail) {
+    $trail->parent('home');
+    $trail->push('Login', route('login'));
+});
+
+// Home > Register
+Breadcrumbs::for('register', function (BreadcrumbTrail $trail) {
+    $trail->parent('home');
+    $trail->push('Register', route('register'));
+});
+
 // Home > Blog > [Category]
 Breadcrumbs::for('category', function (BreadcrumbTrail $trail, $category) {
     $trail->parent('blog');
     $trail->push($category->title, route('category', $category));
 });
+
