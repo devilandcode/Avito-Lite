@@ -36,11 +36,16 @@ use Laravel\Sanctum\HasApiTokens;
  * @method static \Illuminate\Database\Eloquent\Builder|User wherePassword($value)
  * @method static \Illuminate\Database\Eloquent\Builder|User whereRememberToken($value)
  * @method static \Illuminate\Database\Eloquent\Builder|User whereUpdatedAt($value)
+ * @property string $status
+ * @method static \Illuminate\Database\Eloquent\Builder|User whereStatus($value)
  * @mixin \Eloquent
  */
 class User extends Authenticatable implements MustVerifyEmail
 {
     use HasApiTokens, HasFactory, Notifiable;
+
+    public const STATUS_WAIT = 'wait';
+    public const STATUS_ACTIVE = 'active';
 
     /**
      * The attributes that are mass assignable.
@@ -51,6 +56,7 @@ class User extends Authenticatable implements MustVerifyEmail
         'name',
         'email',
         'password',
+        'status',
     ];
 
     /**
