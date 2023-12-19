@@ -82,7 +82,7 @@
         </nav>
     </x-slot>
     <x-slot name="breadcrumbs">
-        {{ Breadcrumbs::render('country') }}
+        {{ Breadcrumbs::render('country')  }}
     </x-slot>
     <x-slot name="section">
         <section>
