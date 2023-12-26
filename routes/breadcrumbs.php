@@ -31,6 +31,18 @@ Breadcrumbs::for('register', function (BreadcrumbTrail $trail) {
     $trail->push('Register', route('register'));
 });
 
+// Home > admin
+Breadcrumbs::for('admin', function (BreadcrumbTrail $trail) {
+    $trail->parent('home');
+    $trail->push('Admin', route('admin.home'));
+});
+
+// Home > admin > users
+Breadcrumbs::for('users', function (BreadcrumbTrail $trail) {
+    $trail->parent('admin');
+    $trail->push('Users', route('admin.users.index'));
+});
+
 //// Home > Blog > [Category]
 //Breadcrumbs::for('category', function (BreadcrumbTrail $trail, $category) {
 //    $trail->parent('blog');

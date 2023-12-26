@@ -16,7 +16,12 @@ class UsersController extends Controller
     {
         $users = User::orderBy('id', 'desc')->paginate(20);
 
-        return view('admin.users.index', compact('users'));
+        $statuses = [
+            User::STATUS_WAIT => 'Waiting',
+            User::STATUS_ACTIVE => 'Active',
+        ];
+
+        return view('admin.users.index', compact('users', 'statuses'));
     }
 
     /**

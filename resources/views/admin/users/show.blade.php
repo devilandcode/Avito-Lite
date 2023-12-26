@@ -1,6 +1,5 @@
 <x-app-layout>
 
-@section('content')
     @include('admin.users._nav')
 
     <div class="d-flex flex-row mb-3">
@@ -55,5 +54,5 @@
         <tbody>
         </tbody>
     </table>
-@endsection
+
 </x-app-layout>
