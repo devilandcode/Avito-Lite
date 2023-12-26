@@ -31,9 +31,9 @@ Breadcrumbs::for('register', function (BreadcrumbTrail $trail) {
     $trail->push('Register', route('register'));
 });
 
-// Home > Blog > [Category]
-Breadcrumbs::for('category', function (BreadcrumbTrail $trail, $category) {
-    $trail->parent('blog');
-    $trail->push($category->title, route('category', $category));
-});
+//// Home > Blog > [Category]
+//Breadcrumbs::for('category', function (BreadcrumbTrail $trail, $category) {
+//    $trail->parent('blog');
+//    $trail->push($category->title, route('category', $category));
+//});
 
