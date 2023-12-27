@@ -33,27 +33,33 @@ Breadcrumbs::for('register', function (BreadcrumbTrail $trail) {
 });
 
 // Home > admin
-Breadcrumbs::for('admin', function (BreadcrumbTrail $trail) {
+Breadcrumbs::for('admin.home', function (BreadcrumbTrail $trail) {
     $trail->parent('home');
     $trail->push('Admin', route('admin.home'));
 });
 
 // Home > admin > users
-Breadcrumbs::for('users', function (BreadcrumbTrail $trail) {
-    $trail->parent('admin');
+Breadcrumbs::for('admin.users.index', function (BreadcrumbTrail $trail) {
+    $trail->parent('admin.home');
     $trail->push('Users', route('admin.users.index'));
 });
 
 // Home > admin > users > create
-Breadcrumbs::for('create', function (BreadcrumbTrail $trail) {
-    $trail->parent('users');
+Breadcrumbs::for('admin.users.create', function (BreadcrumbTrail $trail) {
+    $trail->parent('admin.users.index');
     $trail->push('Create', route('admin.users.create'));
 });
 
-// Home > admin > users > user's name
-Breadcrumbs::for('username', function (BreadcrumbTrail $trail, User $user) {
-    $trail->parent('users');
-    $trail->push($user->name, route('admin.users.show'));
+// Home > admin > users > show
+Breadcrumbs::for('admin.users.show', function (BreadcrumbTrail $trail, User $user) {
+    $trail->parent('admin.users.index');
+    $trail->push($user->name, route('admin.users.show', $user));
+});
+
+// Home > admin > users > edit
+Breadcrumbs::for('admin.users.edit', function (BreadcrumbTrail $trail, User $user) {
+    $trail->parent('admin.users.index');
+    $trail->push($user->name, route('admin.users.edit', $user));
 });
 
 //// Home > Blog > [Category]
