@@ -7,7 +7,7 @@
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 text-gray-900">
-                    {{ Breadcrumbs::render('users')  }}
+                    {{ Breadcrumbs::render('admin.users.index')  }}
 
                     <div class="p-6 text-gray-900">
                         <div class="">
@@ -31,13 +31,7 @@
                                 <td class="border px-4 py-2">{{ $user->id }}</td>
                                 <td class="border px-4 py-2"><a class="hover:text-rose-300" href="{{ route('admin.users.show', $user) }}">{{ $user->name }}</a></td>
                                 <td class="border px-4 py-2">{{ $user->email }}</td>
-                                <td class="border px-4 py-2">@if ($user->isWait())
-                                        <span class="border p-1 bg-blue-300 rounded">Waiting</span>
-                                    @endif
-                                    @if ($user->isActive())
-                                        <span class="border p-1 bg-blue-300 rounded">Active</span>
-                                    @endif
-                                </td>
+                                <td class="border px-4 py-2">{{ $user->status }}</td>
                             </tr>
                             @endforeach
                             </tbody>

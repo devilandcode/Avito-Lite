@@ -5,7 +5,7 @@
     </x-slot>
 
     <div class="">
-        {{ Breadcrumbs::render('create')  }}
+        {{ Breadcrumbs::render('admin.users.create')  }}
     </div>
 
     <div class="py-12">
