@@ -1,4 +1,5 @@
 @php use Diglactic\Breadcrumbs\Breadcrumbs; @endphp
+
 <x-app-layout>
     <x-slot name="header">
         <x-header.index >
