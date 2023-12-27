@@ -47,7 +47,7 @@ class UsersController extends Controller
             'email' => $request->input('email'),
         ]);
 
-        return redirect()->route('admin.users.show', ['id' => $user->id]);
+        return redirect()->route('admin.users.show', compact('user'));
     }
 
     /**
