@@ -7,6 +7,8 @@ use App\Http\Requests\Admin\Users\CreateRequest;
 use App\Http\Requests\Admin\Users\UpdateRequest;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
+use Str;
 
 class UsersController extends Controller
 {
@@ -39,7 +41,10 @@ class UsersController extends Controller
     public function store(CreateRequest $request): \Illuminate\Http\RedirectResponse
     {
         $data = $request->validated();
-        $user = User::create($data);
+        $user = User::create($data + [
+            'password' => Hash::make(Str::random()),
+            'status' => User::STATUS_ACTIVE
+        ]);
 
         return redirect()->route('admin.users.show', compact('user'));
     }

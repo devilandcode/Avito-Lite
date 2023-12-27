@@ -28,10 +28,17 @@
                             <tbody>
                             @foreach($users as $user)
                             <tr>
-                                <td class="border px-4 py-2">{{ $user->id }}</td>
-                                <td class="border px-4 py-2"><a class="hover:text-rose-300" href="{{ route('admin.users.show', $user) }}">{{ $user->name }}</a></td>
-                                <td class="border px-4 py-2">{{ $user->email }}</td>
-                                <td class="border px-4 py-2">{{ $user->status }}</td>
+                                <td class="border px-4 py-2 text-center">{{ $user->id }}</td>
+                                <td class="border px-4 py-2 text-center"><a class="hover:text-rose-300" href="{{ route('admin.users.show', $user) }}">{{ $user->name }}</a></td>
+                                <td class="border px-4 py-2 text-center">{{ $user->email }}</td>
+                                <td class="border px-4 py-2 text-center">
+                                    @if($user->isActive())
+                                        <span class="border bg-green-700 p-1 rounded text-white">{{ $user->status }}</span>
+                                    @endif
+                                    @if($user->isWait())
+                                        <span class="border bg-red-700 p-1 rounded text-white">{{ $user->status }}</span>
+                                    @endif
+                                </td>
                             </tr>
                             @endforeach
                             </tbody>
