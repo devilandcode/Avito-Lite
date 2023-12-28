@@ -50,8 +50,9 @@
                             </div>
                             <div class="md:w-2/3">
                                 <select class="w-full" name="status">
-                                    <option value="Active">Active</option>
-                                    <option value="Waiting">Waiting</option>
+                                    @foreach($statuses as $status)
+                                        <option value="{{ $status }}">{{ $status }}</option>
+                                    @endforeach
                                 </select>
                             </div>
                         </div>
