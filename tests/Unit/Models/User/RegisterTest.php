@@ -3,13 +3,13 @@
 namespace Tests\Unit\Models\User;
 
 use App\Models\User;
+use Illuminate\Foundation\Testing\DatabaseTransactions;
 use PHPUnit\Framework\TestCase;
 
 class RegisterTest extends TestCase
 {
-    /**
-     * A basic unit test example.
-     */
+    use DatabaseTransactions;
+
     public function testRequest(): void
     {
         $user = User::register(
